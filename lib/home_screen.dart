@@ -6,7 +6,6 @@ import 'features/hive/screen/hive_screen.dart';
 import 'features/isar/screen/isar_screen.dart';
 import 'features/sqflite/screen/sqflite_screen.dart';
 import 'features/secure_storage/screen/secure_storage_screen.dart';
-import 'features/app_groups/screen/app_groups_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -56,12 +55,6 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Безопасное хранение (Keychain / Keystore)',
               destination: SecureStorageScreen(),
             ),
-            // _DemoTile(
-            //   icon: Icons.group_work_outlined,
-            //   title: 'iOS App Groups',
-            //   subtitle: 'Обмен данными между приложениями и расширениями',
-            //   destination: AppGroupsScreen(),
-            // ),
           ],
         ),
       );
