@@ -335,3 +335,63 @@ if (await storage.containsKey(key: 'access_token')) {
 - **Keychain** — системное хранилище Apple для **паролей, ключей и сертификатов**.
 - Данные **шифруются ОС** и привязаны к приложению (или к группе приложений через App Group). Другие приложения по умолчанию к ним не имеют доступа.
 - Используется для токенов, паролей, PIN, ключей API — то, что не должно храниться в открытом виде в файлах приложения. Во Flutter доступ к Keychain даёт пакет **flutter_secure_storage**.
+
+## Источники (по темам)
+
+Ссылки без дубликатов, по одной–две на тему.
+
+**Персистентность, общее**
+
+- [Flutter: Data persistence (cookbook)](https://docs.flutter.dev/cookbook/persistence)
+
+**Assets (шрифты, картинки, файлы из бандла)**
+
+- [Flutter: Adding assets and images](https://docs.flutter.dev/cookbook/assets/images)
+- [pubspec — Asset section](https://dart.dev/tools/pub/pubspec#asset-section)
+
+**path_provider, Directory, File**
+
+- [path_provider (pub.dev)](https://pub.dev/packages/path_provider)
+- [Flutter: Reading and writing files](https://docs.flutter.dev/cookbook/persistence/reading-writing-files)
+
+**Shared Preferences**
+
+- [Flutter: Store key-value data on disk](https://docs.flutter.dev/cookbook/persistence/key-value)
+- [shared_preferences (pub.dev)](https://pub.dev/packages/shared_preferences)
+
+**SQL vs NoSQL, выбор хранилища**
+
+- [sqflite (pub.dev)](https://pub.dev/packages/sqflite)
+- [Hive (pub.dev)](https://pub.dev/packages/hive)
+- [Isar (pub.dev)](https://pub.dev/packages/isar)
+
+**sqflite**
+
+- [Flutter: Persist data with SQLite](https://docs.flutter.dev/cookbook/persistence/sqlite)
+- [SQLite documentation](https://www.sqlite.org/docs.html)
+
+**Firestore**
+
+- [Firestore (Firebase)](https://firebase.google.com/docs/firestore)
+- [cloud_firestore (pub.dev)](https://pub.dev/packages/cloud_firestore)
+
+**Secure Storage (токены, пароли)**
+
+- [Flutter: Store sensitive data](https://docs.flutter.dev/cookbook/persistence/secure-store)
+- [flutter_secure_storage (pub.dev)](https://pub.dev/packages/flutter_secure_storage)
+
+**iOS Keychain, Android Keystore**
+
+- [iOS: Keychain Services](https://developer.apple.com/documentation/security/keychain_services)
+- [Android: Keystore system](https://developer.android.com/training/articles/keystore)
+
+**Обмен кредами, App Groups (iOS)**
+
+- [Apple: App Groups](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups)
+- [Apple: Keychain Sharing / Access Groups](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)
+
+**Android: виджеты, аккаунты**
+
+- [Android: App widgets](https://developer.android.com/guide/topics/appwidgets)
+- [Android: AccountManager](https://developer.android.com/reference/android/accounts/AccountManager)
+
