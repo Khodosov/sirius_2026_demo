@@ -16,19 +16,29 @@ class SqfliteManager {
 
     _db = await openDatabase(
       path,
-      version: 1,
-      onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE $_tableName (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            string_value TEXT NOT NULL,
-            number_value INTEGER NOT NULL
-          )
-        ''');
-      },
+      version: 1, // Нужна для миграций
+      onCreate: _onCreate,
+      onUpgrade: _onUpgrade,
     );
 
     print('[sqflite] Database opened: $path');
+  }
+
+  Future<void> _onCreate(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE $_tableName (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        string_value TEXT NOT NULL,
+        number_value INTEGER NOT NULL
+      )
+    ''');
+  }
+
+  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    // TODO: миграции при обновлении версии БД
+    // if (oldVersion < 2) {
+    //   await db.execute('ALTER TABLE $_tableName ADD COLUMN created_at TEXT');
+    // }
   }
 
   Future<void> insert({

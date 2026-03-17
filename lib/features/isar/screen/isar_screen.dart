@@ -50,6 +50,15 @@ class _IsarScreenState extends State<IsarScreen> {
     }
   }
 
+  Future<void> _deleteAll() async {
+    await _manager.deleteAll();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Данные удалены')),
+      );
+    }
+  }
+
   void _showSavedData() {
     final entry = _manager.getEntry();
 
@@ -87,6 +96,13 @@ class _IsarScreenState extends State<IsarScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Isar'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_outline),
+            onPressed: _deleteAll,
+            tooltip: 'Удалить данные',
+          ),
+        ],
       ),
       body: !_manager.isReady
           ? const Center(child: CircularProgressIndicator())

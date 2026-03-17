@@ -49,6 +49,16 @@ class LocalStorageManager {
     return null;
   }
 
+  Future<void> deleteAll() async {
+    final docsPath = await _documentsPath;
+    final tempPath = await _tempPath;
+    final docsFile = File('$docsPath/$_fileName');
+    final tempFile = File('$tempPath/$_fileName');
+    if (await docsFile.exists()) await docsFile.delete();
+    if (await tempFile.exists()) await tempFile.delete();
+    print('[LocalStorage] Files deleted');
+  }
+
   Future<String> getDocumentsFilePath() async {
     final path = await _documentsPath;
     return '$path/$_fileName';

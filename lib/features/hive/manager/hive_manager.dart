@@ -31,6 +31,10 @@ class HiveManager {
     return _box?.get(_entryKey);
   }
 
+  Future<void> deleteAll() async {
+    await _box?.clear();
+  }
+
   Future<void> dispose() async {
     await _box?.close();
     _box = null;

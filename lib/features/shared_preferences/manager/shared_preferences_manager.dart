@@ -28,6 +28,11 @@ class SharedPreferencesManager {
     return _prefs?.getInt(_keyNumber);
   }
 
+  Future<void> deleteAll() async {
+    await _prefs?.remove(_keyString);
+    await _prefs?.remove(_keyNumber);
+  }
+
   void dispose() {
     _prefs = null;
   }

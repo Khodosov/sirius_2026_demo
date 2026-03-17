@@ -65,6 +65,15 @@ class _LocalStorageScreenState extends State<LocalStorageScreen> {
     }
   }
 
+  Future<void> _deleteAll() async {
+    await _manager.deleteAll();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Файлы удалены')),
+      );
+    }
+  }
+
   Future<void> _showSavedData() async {
     final docsContent = await _manager.readFromDocuments();
     final tempContent = await _manager.readFromTemp();
@@ -121,6 +130,13 @@ class _LocalStorageScreenState extends State<LocalStorageScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Local Storage'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_outline),
+            onPressed: _deleteAll,
+            tooltip: 'Удалить файлы',
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

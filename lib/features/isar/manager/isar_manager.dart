@@ -36,6 +36,12 @@ class IsarManager {
     return _isar?.isarEntrys.where().findFirstSync();
   }
 
+  Future<void> deleteAll() async {
+    final isar = _isar;
+    if (isar == null) return;
+    await isar.writeTxn(() => isar.isarEntrys.clear());
+  }
+
   Future<void> dispose() async {
     await _isar?.close();
     _isar = null;

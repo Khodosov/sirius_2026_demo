@@ -55,6 +55,15 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
     }
   }
 
+  Future<void> _deleteAll() async {
+    await _manager.deleteAll();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Данные удалены')),
+      );
+    }
+  }
+
   void _showSavedData() {
     showModalBottomSheet(
       context: context,
@@ -90,6 +99,13 @@ class _SharedPreferencesScreenState extends State<SharedPreferencesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shared Preferences'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_outline),
+            onPressed: _deleteAll,
+            tooltip: 'Удалить данные',
+          ),
+        ],
       ),
       body: !_manager.isReady
           ? const Center(child: CircularProgressIndicator())
